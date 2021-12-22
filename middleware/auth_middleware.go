@@ -11,13 +11,11 @@ func AuthMiddleware() gin.HandlerFunc {
 		if c.GetHeader("X-API-Key") == "radenganteng" {
 			c.Next()
 		} else {
-			c.JSONP(http.StatusUnauthorized, response.WebResponse{
+			c.AbortWithStatusJSON(http.StatusUnauthorized, response.WebResponse{
 				Code:   http.StatusUnauthorized,
 				Status: "UNAUTHORIZED",
 				Data:   "Wrong api key",
 			})
-
-			c.Abort()
 		}
 	}
 }
