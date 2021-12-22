@@ -14,6 +14,7 @@ func AuthMiddleware() gin.HandlerFunc {
 			c.JSONP(http.StatusUnauthorized, response.WebResponse{
 				Code:   http.StatusUnauthorized,
 				Status: "UNAUTHORIZED",
+				Data:   "Wrong api key",
 			})
 
 			c.Abort()

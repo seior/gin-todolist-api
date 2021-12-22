@@ -22,5 +22,7 @@ func NewRouter(controller controller.TodolistController) *gin.Engine {
 		todolist.GET("/", controller.FindAll)
 	}
 
+	router.NoRoute(middleware.NotFoundPath)
+
 	return router
 }
